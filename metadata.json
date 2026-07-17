@@ -1,0 +1,6 @@
+{
+  "name": "Kapsul4D - FIFA World Cup 2026",
+  "description": "Platform visual interaktif seputar Piala Dunia FIFA 2026 USA, Canada, dan Mexico dengan klasemen grup, bracket final, statistik, dan pemain terbaik.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

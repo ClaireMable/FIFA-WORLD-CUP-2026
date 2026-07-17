@@ -1,0 +1,952 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-brand: #adff2f; /* Lime Green like the Kapsul4D login/highlight */
+  --color-brand-hover: #96e024;
+}
+
+/* Custom smooth scroll and body dark base styling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #030712;
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+}
+
+/* Custom typography classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Hide scrollbars for aesthetic widgets */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Uiverse.io Card Styles by Cobp - Adapted for Responsive Layouts */
+.uiverse-card-container {
+  position: relative;
+  padding: 2.5px;
+  background-image: linear-gradient(
+    to bottom left,
+    #adff2f 0%,
+    #121319 15%,
+    #0d0d12 85%,
+    #adff2f 100%
+  );
+  border-radius: 28px;
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.4),
+    -40px 40px 80px -40px rgba(173, 255, 47, 0.15),
+    40px -40px 80px -40px rgba(173, 255, 47, 0.15);
+  transition: all 0.4s ease;
+}
+
+.uiverse-card-container:hover {
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.95),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.5),
+    -60px 60px 100px -40px rgba(173, 255, 47, 0.3),
+    60px -60px 100px -40px rgba(173, 255, 47, 0.3);
+}
+
+/* Active Highlight Style for selected buttons using brand lime green */
+.uiverse-card-container-active {
+  background-image: linear-gradient(
+    to bottom left,
+    #adff2f 0%,
+    #121319 15%,
+    #0d0d12 85%,
+    #adff2f 100%
+  ) !important;
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.95),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.5),
+    -60px 60px 100px -40px rgba(173, 255, 47, 0.35),
+    60px -60px 100px -40px rgba(173, 255, 47, 0.35) !important;
+}
+
+.uiverse-card-container-active .uiverse-card-body {
+  background-image: linear-gradient(to top, #232a18 0%, #0c0f08 100%) !important;
+  border: 1px solid #1a220c !important;
+}
+
+.uiverse-card-container-active .uiverse-card-body::before {
+  background-color: rgba(173, 255, 47, 0.3) !important;
+  width: 100px;
+  height: 100px;
+  filter: blur(25px);
+}
+
+.uiverse-card-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: linear-gradient(to top, #1c1d24 0%, #0c0d10 100%);
+  border-radius: 26px;
+  border: 1px solid #121319;
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.uiverse-card-body::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 130%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: rotate(-37deg) translate(0, -50%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.uiverse-card-body::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(173, 255, 47, 0.12);
+  border-radius: 100%;
+  transition: 0.5s ease;
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.uiverse-card-container:hover .uiverse-card-body::before {
+  background-color: rgba(173, 255, 47, 0.35);
+  width: 110px;
+  height: 110px;
+  filter: blur(35px);
+}
+
+/* Premium Neon-Glow Hover styling for Match Cards in Matches.tsx */
+.neon-match-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #2a2a2a;
+  background-color: #151515;
+}
+
+.neon-match-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  --color: #adff2f;
+  --blur: 1.5rem;
+  --box-blur: calc(0.5 * var(--blur));
+  --glow: var(--color);
+  
+  border: 2px solid var(--color) !important;
+  box-shadow: 
+    /* inside glass tube lines */
+    inset 0 0 0 2px rgba(0, 0, 0, 0.15),
+    0 0 0 2px rgba(0, 0, 0, 0.15),
+    /* glow inside & outside */
+    inset 0 0 var(--box-blur) var(--glow),
+    0 0 var(--box-blur) var(--glow);
+  filter: brightness(115%) drop-shadow(0 0 10px var(--glow));
+}
+
+/* Premium music-player styled beveled cards (Uiverse.io dorian_8749) */
+.uiverse-music-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background-color: #0c0d10;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(2px);
+}
+
+.uiverse-music-container:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 10px 25px -5px rgba(173, 255, 47, 0.1), 
+    0 8px 10px -6px rgba(173, 255, 47, 0.1);
+}
+
+.uiverse-music-shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 
+    0 0 8px rgba(0,0,0,0.03),
+    0 2px 6px rgba(0,0,0,0.08),
+    inset 3px 3px 0.5px -3.5px rgba(255,255,255,0.09),
+    inset -3px -3px 0.5px -3.5px rgba(255,255,255,0.85),
+    inset 1px 1px 1px -0.5px rgba(255,255,255,0.6),
+    inset -1px -1px 1px -0.5px rgba(255,255,255,0.6),
+    inset 0 0 6px 6px rgba(255,255,255,0.12),
+    inset 0 0 2px 2px rgba(255,255,255,0.06),
+    0 0 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.uiverse-music-container:hover .uiverse-music-shadow {
+  box-shadow: 
+    0 0 12px rgba(173, 255, 47, 0.15),
+    0 4px 15px rgba(173, 255, 47, 0.2),
+    inset 3px 3px 0.5px -3.5px rgba(255,255,255,0.15),
+    inset -3px -3px 0.5px -3.5px rgba(255,255,255,0.9),
+    inset 1px 1px 1px -0.5px rgba(255,255,255,0.7),
+    inset -1px -1px 1px -0.5px rgba(255,255,255,0.7),
+    inset 0 0 8px 8px rgba(255,255,255,0.18),
+    inset 0 0 3px 3px rgba(255,255,255,0.1),
+    0 0 16px rgba(173, 255, 47, 0.25);
+}
+
+/* Matchups in RoadToFinal: glow and timbul only when hovered/touched */
+.uiverse-hover-card {
+  position: relative;
+  padding: 2px;
+  background-color: transparent;
+  border-radius: 28px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.uiverse-hover-card-inner {
+  position: relative;
+  background-color: #121319;
+  border: 2px solid #1c1c1c;
+  border-radius: 26px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Hover effects for matchups */
+.uiverse-hover-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  background-image: linear-gradient(
+    to bottom left,
+    #adff2f 0%,
+    #121319 15%,
+    #0d0d12 85%,
+    #adff2f 100%
+  );
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.4),
+    -40px 40px 80px -40px rgba(173, 255, 47, 0.3),
+    40px -40px 80px -40px rgba(173, 255, 47, 0.3);
+}
+
+.uiverse-hover-card:hover .uiverse-hover-card-inner {
+  background-image: linear-gradient(to top, #1c1d24 0%, #0c0d10 100%);
+  border-color: #121319;
+  box-shadow:
+    inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 1.5px -2px rgba(255, 255, 255, 0.6);
+}
+
+/* Glowing bubble effect inside matchups on hover */
+.uiverse-hover-card-inner::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(173, 255, 47, 0);
+  border-radius: 100%;
+  transition: 0.5s ease;
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.uiverse-hover-card:hover .uiverse-hover-card-inner::before {
+  background-color: rgba(173, 255, 47, 0.25);
+  width: 100px;
+  height: 100px;
+  filter: blur(35px);
+}
+
+/* ==========================================================================
+   PREMIUM LIGHT MODE THEME OVERRIDES (KAPSUL4D)
+   ========================================================================== */
+html.light, html.light body {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+html.light .min-h-screen {
+  background-color: #f1f5f9 !important;
+}
+
+/* Global text overrides */
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
+  color: #0f172a !important;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-gray-100 { color: #0f172a !important; }
+html.light .text-gray-200 { color: #334155 !important; }
+html.light .text-gray-300 { color: #475569 !important; }
+html.light .text-gray-400 { color: #64748b !important; }
+html.light .text-gray-500 { color: #94a3b8 !important; }
+html.light .text-neutral-200 { color: #1e293b !important; }
+html.light .text-neutral-300 { color: #334155 !important; }
+html.light .text-neutral-400 { color: #475569 !important; }
+html.light .text-neutral-500 { color: #64748b !important; }
+
+/* Global background overrides to soft off-white & clean slates */
+html.light .bg-gray-950,
+html.light .bg-neutral-900,
+html.light .bg-neutral-950,
+html.light .bg-slate-950,
+html.light .bg-[#1c1c1c],
+html.light .bg-[#0b0f19],
+html.light .bg-gray-900,
+html.light .bg-[#030712] {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-neutral-900\/60 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-neutral-800 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Global border overrides */
+html.light .border-gray-800,
+html.light .border-neutral-800,
+html.light .border-neutral-700,
+html.light .border-gray-900,
+html.light .border-neutral-800\/80,
+html.light .border-gray-800\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Header background & navigation overrides */
+html.light header {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light header button:not(.text-brand) {
+  color: #334155 !important;
+}
+
+html.light header button:not(.text-brand):hover {
+  color: #adff2f !important;
+}
+
+/* Mobile drawer menu */
+html.light .md\:hidden.bg-\[\#030712\] {
+  background-color: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* Hero Section adjustments */
+html.light #beranda {
+  background-color: #f8fafc !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html.light #beranda .bg-gradient-to-r {
+  background-image: linear-gradient(to right, rgba(248, 250, 252, 0.98) 0%, rgba(248, 250, 252, 0.8) 50%, rgba(248, 250, 252, 0.45) 100%) !important;
+}
+
+html.light #beranda .bg-gradient-to-t {
+  background-image: linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 100%) !important;
+}
+
+html.light #beranda img {
+  opacity: 0.28 !important;
+}
+
+/* Premium beveled Uiverse containers and cards in Light Mode */
+html.light .uiverse-card-container {
+  background-image: linear-gradient(to bottom left, #adff2f 0%, #ffffff 15%, #f8fafc 85%, #adff2f 100%) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .uiverse-card-body {
+  background-image: linear-gradient(to top, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: inset 0 3px 1.5px -2px rgba(255, 255, 255, 0.95), inset 0 -3px 1.5px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.light .uiverse-card-container-active .uiverse-card-body {
+  background-image: linear-gradient(to top, #f4ffd1 0%, #ffffff 100%) !important;
+  border-color: #adff2f !important;
+}
+
+html.light .neon-match-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .neon-match-card:hover {
+  background-color: #fbfff4 !important;
+  border-color: #adff2f !important;
+  box-shadow: 0 0 15px rgba(173, 255, 47, 0.35) !important;
+}
+
+html.light .uiverse-hover-card-inner {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .uiverse-hover-card:hover .uiverse-hover-card-inner {
+  background-image: linear-gradient(to top, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .uiverse-music-container {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .uiverse-music-shadow {
+  box-shadow: 
+    inset 3px 3px 0.5px -3.5px rgba(255,255,255,0.95),
+    inset -3px -3px 0.5px -3.5px rgba(0,0,0,0.05),
+    inset 0 0 6px 6px rgba(0,0,0,0.01),
+    0 4px 12px rgba(0,0,0,0.03) !important;
+}
+
+/* Input design */
+html.light input {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Interactive Simulation & control buttons */
+html.light .bg-emerald-950\/40 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border-color: #a7f3d0 !important;
+}
+
+html.light .bg-emerald-950\/40:hover {
+  background-color: #d1fae5 !important;
+}
+
+html.light .text-emerald-300 {
+  color: #047857 !important;
+}
+
+html.light .bg-emerald-500\/10 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+}
+
+/* Footer overrides */
+html.light footer {
+  background-color: #ffffff !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+html.light footer p, html.light footer span, html.light footer a {
+  color: #475569 !important;
+}
+
+html.light footer a:hover {
+  color: #adff2f !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   BRACKET WORLD CUP 2026 - PURE CSS TOURNAMENT TREE
+   ══════════════════════════════════════════════════════════════════ */
+
+.bracket-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 24px;
+  -webkit-overflow-scrolling: touch;
+}
+.bracket-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.bracket-scroll::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.02);
+  border-radius: 99px;
+}
+.bracket-scroll::-webkit-scrollbar-thumb {
+  background: rgba(173,255,47,0.2);
+  border-radius: 99px;
+  transition: background 0.2s;
+}
+.bracket-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(173,255,47,0.4);
+}
+
+.bracket-grid {
+  display: flex;
+  align-items: stretch;
+  min-width: fit-content;
+  padding: 20px 10px;
+}
+
+.bracket-round {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.bracket-round + .bracket-round {
+  margin-left: 40px;
+}
+
+.round-header {
+  text-align: center;
+  padding: 8px 0 16px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #adff2f;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(173,255,47,0.3);
+}
+
+.round-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 190px;
+}
+
+/* ── Match Pair ─────────────────────────────────────────────── */
+.match-pair {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  padding: 10px 0;
+}
+
+/* Connector: horizontal from match right edge to midpoint */
+.bracket-match::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  width: 20px;
+  height: 1.5px;
+  background: rgba(173,255,47,0.2);
+  pointer-events: none;
+}
+
+/* Connector: vertical line between two matches in pair */
+.match-pair::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 25%;
+  bottom: 25%;
+  width: 1.5px;
+  background: rgba(173,255,47,0.2);
+  pointer-events: none;
+}
+
+/* Connector: horizontal from vertical midpoint to next round */
+.match-pair::before {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  width: 20px;
+  height: 1.5px;
+  background: rgba(173,255,47,0.2);
+  pointer-events: none;
+}
+
+/* Single match pair (Final) — hide pair connectors */
+.match-pair.single::after,
+.match-pair.single::before {
+  display: none !important;
+}
+
+/* Also hide bracket-match::after connector on final match */
+.round-final-col .bracket-match::after {
+  display: none !important;
+}
+
+/* ── Match Box ── */
+.bracket-match {
+  width: 190px;
+  height: 58px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.02) 60%,
+    rgba(255,255,255,0.01) 100-percent
+  );
+  border: 1px solid rgba(173,255,47,0.15);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.25),
+    0 1px 0 rgba(255,255,255,0.05) inset;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bracket-match:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(173,255,47,0.05) 0%,
+    rgba(255,255,255,0.03) 60%,
+    rgba(255,255,255,0.01) 100-percent
+  );
+  border-color: #adff2f;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 12px rgba(173,255,47,0.25),
+    0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Team Row ───────────────────────────────────────────────── */
+.team-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 500;
+  gap: 4px;
+  transition: background 0.2s;
+  min-height: 0;
+  position: relative;
+  z-index: 1;
+}
+.team-row + .team-row {
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  flex: 1;
+}
+
+.team-flag {
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.team-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.team-score {
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  flex-shrink: 0;
+  min-width: 14px;
+  text-align: right;
+}
+
+/* ═══ WINNER ═══ */
+.team-row.winner {
+  background: rgba(173,255,47,0.03);
+}
+.team-row.winner .team-name {
+  color: #adff2f;
+  font-weight: 700;
+}
+.team-row.winner .team-score {
+  color: #adff2f;
+  text-shadow: 0 0 8px rgba(173,255,47,0.4);
+}
+
+/* ═══ LOSER ═══ */
+.team-row.loser .team-name {
+  color: rgba(255,255,255,0.3);
+}
+.team-row.loser .team-score {
+  color: rgba(255,255,255,0.25);
+}
+
+/* TBD */
+.team-row.tbd-row {
+  justify-content: center;
+  color: rgba(255,255,255,0.15);
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Champion Box ── */
+.champion-box {
+  width: 170px;
+  padding: 16px 14px;
+  border-radius: 16px;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(173,255,47,0.12) 0%,
+    rgba(173,255,47,0.04) 60%,
+    rgba(173,255,47,0.01) 100-percent
+  );
+  border: 1px solid rgba(173,255,47,0.35);
+  box-shadow:
+    0 0 16px rgba(173,255,47,0.12),
+    0 8px 32px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.champion-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(173,255,47,0.4), transparent);
+  pointer-events: none;
+}
+
+.champion-trophy-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.champion-trophy-icon {
+  width: 28px;
+  height: 28px;
+  color: #adff2f;
+  filter: drop-shadow(0 0 8px rgba(173,255,47,0.8));
+}
+
+.champion-label {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #adff2f;
+  margin-bottom: 6px;
+  text-shadow: 0 0 8px rgba(173,255,47,0.3);
+}
+
+.champion-team {
+  font-size: 13px;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 0 12px rgba(173,255,47,0.4);
+}
+
+.final-body-center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.champion-float {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.champion-connector {
+  width: 1.5px;
+  height: 16px;
+  background: linear-gradient(to bottom, rgba(173,255,47,0.35), rgba(173,255,47,0.1));
+}
+
+.bracket-mobile-hint {
+  text-align: center;
+  padding-bottom: 8px;
+  font-size: 11px;
+  color: rgba(173,255,47,0.6);
+  font-weight: 600;
+}
+
+/* ── Light Mode overrides for Bracket ── */
+html.light .round-header {
+  color: #adff2f;
+  text-shadow: none;
+}
+
+html.light .bracket-match {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+html.light .bracket-match:hover {
+  background: #fbfdf0;
+  border-color: #adff2f;
+  box-shadow: 0 4px 16px rgba(173,255,47,0.15);
+}
+
+html.light .team-row + .team-row {
+  border-top-color: rgba(0, 0, 0, 0.04);
+}
+
+html.light .team-name {
+  color: #334155;
+}
+
+html.light .team-score {
+  color: #64748b;
+}
+
+html.light .team-row.winner {
+  background: rgba(173,255,47,0.05);
+}
+
+html.light .team-row.winner .team-name {
+  color: #1e293b;
+}
+
+html.light .team-row.loser .team-name {
+  color: #94a3b8;
+}
+
+html.light .team-row.tbd-row {
+  color: #94a3b8;
+}
+
+html.light .bracket-match::after,
+html.light .match-pair::after,
+html.light .match-pair::before {
+  background: rgba(173,255,47,0.3);
+}
+
+html.light .champion-box {
+  background: #ffffff;
+  border-color: #adff2f;
+  box-shadow: 0 4px 20px rgba(173,255,47,0.15);
+}
+
+html.light .champion-team {
+  color: #1e293b;
+}
+
+/* 3D Tilt Card and Hover Tracker for Player Bio Modal */
+.tilt-container {
+  position: relative;
+  width: 100%;
+  max-width: 384px; /* max-w-sm is 24rem = 384px */
+  height: 520px;
+  perspective: 1000px;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#tilt-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  transition: transform 150ms ease-out, border-color 300ms, box-shadow 300ms;
+  border-width: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+}
+
+/* Background glow shadow behind the card */
+.tilt-ambient-glow {
+  position: absolute;
+  inset: -60px; /* Super wide inset for majestic glow dispersion */
+  border-radius: 48px;
+  pointer-events: none;
+  z-index: -10;
+  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 400ms cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-unhovered {
+  opacity: 0.35;
+  transform: scale(0.9);
+  background: radial-gradient(circle, rgba(84, 138, 14, 0.25) 0%, rgba(11, 43, 6, 0.1) 45%, transparent 75%);
+  filter: blur(35px);
+}
+
+.glow-hovered {
+  opacity: 0.95;
+  transform: scale(1.08);
+  background: radial-gradient(circle, rgba(173, 255, 47, 0.55) 0%, rgba(16, 185, 129, 0.25) 45%, rgba(5, 150, 105, 0.08) 70%, transparent 100%);
+  filter: blur(45px);
+}
+
+.glow-active {
+  opacity: 1;
+  transform: scale(1.18);
+  background: radial-gradient(circle, rgba(173, 255, 47, 0.85) 0%, rgba(16, 185, 129, 0.4) 50%, rgba(5, 150, 105, 0.15) 75%, transparent 100%);
+  filter: blur(55px);
+}
+
+.tilt-unhovered {
+  border-color: rgba(173, 255, 47, 0.15) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.75), 0 0 20px rgba(173, 255, 47, 0.1) !important;
+}
+
+.tilt-hovered {
+  border-color: #adff2f !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(173, 255, 47, 0.55), inset 0 0 15px rgba(173, 255, 47, 0.1) !important;
+}
+
+
+
