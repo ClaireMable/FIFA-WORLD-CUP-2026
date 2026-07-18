@@ -160,26 +160,26 @@ export default function Hero({ onScheduleClick, onPredictionClick, onGroupsClick
           </div>
 
           {/* Hero Right Widget - Compact, sleek vertical navigation panel to keep background fully visible */}
-          <div className="lg:col-span-3 lg:col-start-10 flex justify-end lg:justify-end w-full">
-            <div className="w-full max-w-[190px] bg-[#030712]/50 border border-gray-800/65 p-4 rounded-2xl shadow-2xl backdrop-blur-md">
+          <div className="lg:col-span-3 lg:col-start-10 flex justify-center lg:justify-end w-full">
+            <div className="w-full lg:max-w-[200px] bg-[#030712]/50 border border-gray-800/65 p-4 sm:p-5 rounded-2xl shadow-2xl backdrop-blur-md">
               <div className="flex items-center justify-between pb-2 mb-3 border-b border-gray-800/60">
-                <span className="font-display font-black text-[10px] tracking-wider text-gray-400 uppercase">MENU</span>
-                <span className="w-1.5 h-1.5 bg-brand rounded-full shadow-[0_0_5px_rgba(173,255,47,0.8)]" />
+                <span className="font-display font-black text-xs tracking-wider text-gray-400 uppercase">MENU</span>
+                <span className="w-1.5 h-1.5 bg-brand rounded-full shadow-[0_0_5px_rgba(173,255,47,0.8)] animate-pulse" />
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5">
                 {quickNavs.map((nav, idx) => {
                   const Icon = nav.icon;
                   return (
                     <button
                       key={idx}
                       onClick={nav.action}
-                      className="flex items-center gap-3 w-full p-2 bg-gray-950/40 hover:bg-brand/10 border border-gray-900/40 hover:border-brand/20 rounded-lg group transition-all duration-200 text-left cursor-pointer"
+                      className="flex items-center gap-4 w-full p-3 bg-gray-950/40 hover:bg-brand/10 border border-gray-900/40 hover:border-brand/20 rounded-xl group transition-all duration-200 text-left cursor-pointer"
                     >
-                      <div className="flex items-center justify-center w-7 h-7 bg-gray-900 border border-gray-800/80 group-hover:bg-brand group-hover:text-black rounded-md text-gray-400 group-hover:scale-105 transition-all">
-                        <Icon className="w-3.5 h-3.5" />
+                      <div className="flex items-center justify-center w-8 h-8 bg-gray-900 border border-gray-800/80 group-hover:bg-brand group-hover:text-black rounded-lg text-gray-400 group-hover:scale-105 transition-all shrink-0">
+                        <Icon className="w-4 h-4" />
                       </div>
-                      <span className="font-display font-bold text-[10px] tracking-wider text-gray-300 group-hover:text-white transition-colors">
+                      <span className="font-display font-bold text-xs sm:text-xs lg:text-[11px] tracking-wider text-gray-300 group-hover:text-white transition-colors">
                         {nav.label}
                       </span>
                     </button>
