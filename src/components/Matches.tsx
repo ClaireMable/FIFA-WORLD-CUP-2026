@@ -250,7 +250,7 @@ const FULL_MATCHES: MatchWithHC[] = [
   { id: 'm-75', date: '18/07', time: '16:00', league: 'AUSTRALIA FOOTBALL NEW SOUTH WALES LEAGUE 1', flag: 'au', homeTeam: 'Bulls FC Academy', awayTeam: 'Bankstown City Lions', handicap: '0 : 0', predictedScore: '1 - 1' },
   { id: 'm-76', date: '18/07', time: '21:00', league: 'ESTONIA PREMIUM LIGA', flag: 'ee', homeTeam: 'Narva Trans', awayTeam: 'Parnu JK Vaprus', handicap: '1/4 : 0', predictedScore: '2 - 1' },
   { id: 'm-77', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'Salisbury United', awayTeam: 'Modbury Jets', handicap: '1 : 0', predictedScore: '3 - 1' },
-  { id: 'm-78', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'Adelaide Atletico VSC', awayTeam: 'Adelaide Olympic', handicap: '0 : 1/4', predictedScore: '0 - 2' },
+  { id: 'm-79', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'Adelaide Atletico VSC', awayTeam: 'Adelaide Olympic', handicap: '0 : 1/4', predictedScore: '0 - 2' },
   { id: 'm-79', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'Adelaide Croatia Raiders', awayTeam: 'Eastern United FC', handicap: '0 : 1 1/4', predictedScore: '1 - 3' },
   { id: 'm-80', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'Adelaide Blue Eagles', awayTeam: 'Adelaide Cobras', handicap: '0 : 1 1/4', predictedScore: '2 - 1' },
   { id: 'm-81', date: '18/07', time: '12:30', league: 'SOUTH AUSTRALIA STATE LEAGUE 1', flag: 'au', homeTeam: 'South Adelaide Panthers', awayTeam: 'The Cove FC', handicap: '3/4 : 0', predictedScore: '1 - 0' },
