@@ -155,10 +155,10 @@ export default function StatisticsAndPlayers() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
               <div className="flex flex-col gap-4">
-                {(viewAllMode === 'goals' ? TOP_PLAYERS : TOP_ASSISTS).slice(0, 10).map(renderPlayerCard)}
+                {(viewAllMode === 'goals' ? TOP_SCORES : TOP_ASSISTS).slice(0, 10).map(renderPlayerCard)}
               </div>
               <div className="flex flex-col gap-4">
-                {(viewAllMode === 'goals' ? TOP_PLAYERS : TOP_ASSISTS).slice(10, 20).map(renderPlayerCard)}
+                {(viewAllMode === 'goals' ? TOP_SCORES : TOP_ASSISTS).slice(10, 20).map(renderPlayerCard)}
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function StatisticsAndPlayers() {
         <div className="bg-[#121316] border border-gray-800/80 rounded-[32px] p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* Column 1: Top Players */}
+          {/* Column 1: Top Scores */}
           <div className="lg:col-span-4 uiverse-music-container p-5 flex flex-col justify-between h-full group">
             <div className="uiverse-music-shadow" />
             <div className="relative z-10 flex flex-col justify-between h-full w-full">
@@ -184,7 +184,7 @@ export default function StatisticsAndPlayers() {
               </div>
 
               <div className="flex flex-col gap-2">
-                {TOP_PLAYERS.slice(0, 6).map((player) => (
+                {TOP_SCORE.slice(0, 6).map((player) => (
                   <div
                     key={player.rank}
                     onClick={() => setActivePlayer(player)}
