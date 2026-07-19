@@ -94,7 +94,7 @@ const STAGES: Stage[] = [
     teams: '2 Tim',
     info: 'Dua gladiator sepak bola dunia bertemu di panggung termegah bumi untuk mengukir nama mereka di trofi emas Piala Dunia FIFA 2026.',
     matchups: [
-      { home: 'Spain', away: 'Argentina', homeScore: '-', awayScore: '-', winner: 'TBD', date: '20 Juli 2026' }
+      { home: 'Spain', away: 'Argentina', homeScore: '1', awayScore: '0', winner: 'home', date: '20 Juli 2026' }
     ]
   },
   {
@@ -104,7 +104,7 @@ const STAGES: Stage[] = [
     teams: '1 Juara',
     info: 'Tim yang akan mengangkat Piala Dunia Emas FIFA dan dinobatkan sebagai Raja Diraja Sepak Bola Dunia 2026.',
     matchups: [
-      { home: 'TBD (Champion)', away: 'Sejarah Baru', homeScore: '🏆', awayScore: '✨', winner: 'TBD', date: '20 Juli 2026' }
+      { home: 'Spain (Champion)', away: 'Sejarah Baru', homeScore: '🏆', awayScore: '✨', winner: 'Spain', date: '20 Juli 2026' }
     ]
   }
 ];
