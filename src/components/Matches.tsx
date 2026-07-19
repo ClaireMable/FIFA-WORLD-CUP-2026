@@ -438,24 +438,40 @@ export default function Matches({ activeTab, setActiveTab, showAll, setShowAll }
         {/* Filters Controls */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8">
           
-          {/* League Select Dropdown */}
-          <div className="md:col-span-6">
-            <label className="block text-[10px] font-mono font-bold text-gray-300 mb-2 uppercase tracking-wider">FILTER TURNAMEN / LIGA</label>
-            <select
-              value={leagueFilter}
-              onChange={(e) => setLeagueFilter(e.target.value)}
-              className={`w-full bg-neutral-900 border text-xs text-white px-4 py-3 rounded-xl outline-none transition-all duration-300 shadow-sm cursor-pointer ${
-                leagueFilter !== 'ALL' 
-                  ? 'border-brand/70 shadow-[0_0_12px_rgba(173,255,47,0.25)]' 
-                  : 'border-neutral-700 hover:border-neutral-600'
-              } focus:border-brand focus:shadow-[0_0_15px_rgba(173,255,47,0.45)] focus:ring-1 focus:ring-brand/30`}
-            >
-              <option value="ALL" className="bg-neutral-900 text-white">Semua Kompetisi ({distinctLeagues.length} Liga)</option>
-              {distinctLeagues.map((lg) => (
-                <option key={lg} value={lg} className="bg-neutral-900 text-white">{lg}</option>
-              ))}
-            </select>
-          </div>
+{/* League Select Dropdown */}
+<div className="md:col-span-6">
+  <label className="block text-[10px] font-mono font-bold text-gray-300 mb-2 uppercase tracking-wider">
+    FILTER TURNAMEN / LIGA
+  </label>
+  
+  {/* Tambahkan relative div agar ikon panah kustom bisa diposisikan di dalam kotak */}
+  <div className="relative">
+    <select
+      value={leagueFilter}
+      onChange={(e) => setLeagueFilter(e.target.value)}
+      // 1. TAMBAHKAN 'appearance-none' untuk menghapus panah bawaan browser yang mepet
+      // 2. UBAH 'px-4' khusus untuk padding kanan menjadi 'pr-10' (memberi ruang kosong di kanan)
+      className={`w-full bg-neutral-900 border appearance-none text-xs text-white pl-4 pr-10 py-3 rounded-xl outline-none transition-all duration-300 shadow-sm cursor-pointer ${
+        leagueFilter !== 'ALL' 
+          ? 'border-brand/70 shadow-[0_0_12px_rgba(173,255,47,0.25)]' 
+          : 'border-neutral-700 hover:border-neutral-600'
+      } focus:border-brand focus:shadow-[0_0_15px_rgba(173,255,47,0.45)] focus:ring-1 focus:ring-brand/30`}
+    >
+      <option value="ALL" className="bg-neutral-900 text-white">Semua Kompetisi ({distinctLeagues.length} Liga)</option>
+      {distinctLeagues.map((lg) => (
+        <option key={lg} value={lg} className="bg-neutral-900 text-white">{lg}</option>
+      ))}
+    </select>
+
+    {/* 3. TAMBAHKAN ELEMEN INI: Ikon Panah Kustom Baru */}
+    {/* Atur posisi jarak dari kanan menggunakan 'right-4' atau 'right-5' sesuai selera Anda */}
+    <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-white">
+      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+</div>
 
           {/* Search Bar */}
           <div className="md:col-span-6">
