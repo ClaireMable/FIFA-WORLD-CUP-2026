@@ -173,7 +173,7 @@ export interface MatchWithHC {
 }
 
 const FULL_MATCHES: MatchWithHC[] = [
-  { id: 'm-1', date: '20/07', time: '02:00', league: 'WORLD CUP 2026 [ IN CANADA, MEXICO & USA ]', flag: 'world', homeTeam: 'Spain', awayTeam: 'Argentina', handicap: '0 : 1/4', predictedScore: '3 - 1' },
+  { id: 'm-1', date: '20/07', time: '02:00', league: 'WORLD CUP 2026 [ IN CANADA, MEXICO & USA ]', flag: 'world', homeTeam: 'Spain', awayTeam: 'Argentina', handicap: '0 : 1/4', predictedScore: '2 - 3' },
   { id: 'm-2', date: '19/07', time: '21:30', league: 'SWEDEN ALLSVENSKAN', flag: 'se', homeTeam: '[8] Elfsborg', awayTeam: '[1] IK Sirius FK', handicap: '1/2 : 0', predictedScore: '2 - 1' },
   { id: 'm-3', date: '19/07', time: '21:30', league: 'SWEDEN ALLSVENSKAN', flag: 'se', homeTeam: '[2] Hammarby', awayTeam: '[14] Degerfors', handicap: '0 : 1 3/4', predictedScore: '3 - 0' },
   { id: 'm-4', date: '19/07', time: '21:30', league: 'SWEDEN ALLSVENSKAN', flag: 'se', homeTeam: '[16] Halmstads', awayTeam: '[3] BK Hacken', handicap: '1 : 0', predictedScore: '1 - 2' },
