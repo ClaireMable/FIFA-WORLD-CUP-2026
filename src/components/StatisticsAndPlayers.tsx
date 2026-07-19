@@ -85,10 +85,10 @@ export default function StatisticsAndPlayers() {
   };
 
   const stats: TournamentStat[] = [
-    { label: 'PERTANDINGAN', value: '103', iconName: 'matches' },
-    { label: 'GOL', value: '307', iconName: 'goals' },
-    { label: 'KARTU MERAH', value: '14', iconName: 'redcards' },
-    { label: 'CLEAN SHEET', value: '55', iconName: 'cleansheets' }
+    { label: 'PERTANDINGAN', value: '104', iconName: 'matches' },
+    { label: 'GOL', value: '308', iconName: 'goals' },
+    { label: 'KARTU MERAH', value: '15', iconName: 'redcards' },
+    { label: 'CLEAN SHEET', value: '56', iconName: 'cleansheets' }
   ];
 
 
